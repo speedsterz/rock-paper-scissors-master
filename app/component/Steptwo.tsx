@@ -23,7 +23,7 @@ const Steptwo = () => {
   const image_src = [
     "./images/icon-paper.svg",
     "./images/icon-scissors.svg",
-    "./images/icon-Rock.svg",
+    "./images/icon-rock.svg",
   ];
   const border_src = ["border-Paper", "border-Scissors", "border-Rock"];
   const { Choose, updateActiveTab, incrementScore, decrementScore } =
@@ -58,7 +58,7 @@ const Steptwo = () => {
               height={0}
               sizes="100vw"
               className="h-auto w-full"
-              alt="Scissors-icon"
+              alt=""
             />
           </div>
           <h2 className=" mt-4 text-center text-lg font-bold text-white">
@@ -86,7 +86,7 @@ const Steptwo = () => {
               height={0}
               sizes="100vw"
               src={image_src[system_Choose]}
-              alt="Scissors-icon"
+              alt=""
               className="h-auto w-full"
             />
           </div>

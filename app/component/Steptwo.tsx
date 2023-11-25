@@ -22,7 +22,7 @@ function check(a: number, b: number) {
 const Steptwo = () => {
   const image_src = [
     "./images/icon-paper.svg",
-    "./images/icon-Scissors.svg",
+    "./images/icon-scissors.svg",
     "./images/icon-Rock.svg",
   ];
   const border_src = ["border-Paper", "border-Scissors", "border-Rock"];

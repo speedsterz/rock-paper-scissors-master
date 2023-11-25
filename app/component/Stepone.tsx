@@ -46,7 +46,7 @@ const Stepone = () => {
             height={0}
             sizes="100vw"
             className="h-auto w-full"
-            src="./images/icon-Scissors.svg"
+            src="./images/icon-scissors.svg"
             alt="Scissors-icon"
           />
         </div>

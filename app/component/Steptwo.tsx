@@ -44,7 +44,7 @@ const Steptwo = () => {
 
   return (
     <>
-      <div className="mx-auto flex w-10/12 items-center justify-between gap-1">
+      <div className="mx-auto flex w-10/12  justify-around gap-1">
         <div>
           <div
             className={`${border_src[Choose]} ${

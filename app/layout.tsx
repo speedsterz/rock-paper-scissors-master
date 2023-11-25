@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+
 import { MyProvider } from "./context/store";
 import Navbar from "./component/Navbar";
+import Modal from "./component/Modal";
 
 export const metadata: Metadata = {
   title: "Frontend Mentor | Rock, Paper, Scissors",
@@ -17,6 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <MyProvider>
         <body>
+          <Modal />
           <main className="py-4">
             <Navbar />
             <div className="mx-auto mt-24 w-10/12 max-w-[1000px] md:mt-48">

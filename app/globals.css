@@ -89,3 +89,10 @@ div:has(.cirShadow) {
 .rulesClr {
   color: hsl(229, 25%, 31%);
 }
+
+.HousePicked {
+  border-radius: 50%;
+  background-color: hsl(229, 25%, 31%, 0.3);
+  width: 130px;
+  height: 130px;
+}

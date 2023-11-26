@@ -31,6 +31,7 @@ const Steptwo = () => {
 
   const [system_Choose, setSystemChoose] = useState(-1);
   const [result, setResult] = useState("");
+  const [isshow, setShow] = useState(false);
 
   useEffect(() => {
     const systemChoose = Math.floor(Math.random() * 3);
@@ -42,13 +43,40 @@ const Steptwo = () => {
     else if (check1 === "YOU LOSE") decrementScore();
   }, []);
 
+  //timer
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShow(true);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const afterTimer = (
+    <div
+      className={`${border_src[system_Choose]} w-[130px] cursor-pointer
+rounded-[50%] border-[16px] bg-white p-6 ${
+        result == "YOU LOSE" && isshow == true ? "cirShadow" : ""
+      }`}
+    >
+      <Image
+        width={0}
+        height={0}
+        sizes="100vw"
+        src={image_src[system_Choose]}
+        alt=""
+        className="h-auto w-full"
+      />
+    </div>
+  );
+
   return (
     <>
       <div className="mx-auto flex w-10/12  justify-around gap-1">
         <div>
           <div
             className={`${border_src[Choose]} ${
-              result == "YOU WIN" ? "cirShadow" : ""
+              result == "YOU WIN" && isshow == true ? "cirShadow" : ""
             } w-[130px]
           cursor-pointer rounded-[50%] border-[16px] bg-white p-6`}
           >
@@ -65,7 +93,29 @@ const Steptwo = () => {
             YOU PICKED
           </h2>
         </div>
-        <div className="t hidden flex-col gap-4 md:flex">
+        {isshow ? (
+          <div className="t hidden flex-col gap-4 md:flex">
+            <h1 className=" text-center text-5xl text-white">{result}</h1>
+            <button
+              className="rounded bg-white px-4 py-2 text-3xl text-gray-400"
+              onClick={() => updateActiveTab(1)}
+            >
+              PLAY AGAIN
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
+        <div>
+          {isshow ? afterTimer : <div className="HousePicked"></div>}
+          <h2 className=" mt-4 text-center text-lg font-bold text-white">
+            HOUSE PICKED
+          </h2>
+        </div>
+      </div>
+
+      {isshow ? (
+        <div className="mx-auto mt-32 flex w-9/12  flex-col gap-3 text-center md:hidden">
           <h1 className=" text-center text-5xl text-white">{result}</h1>
           <button
             className="rounded bg-white px-4 py-2 text-3xl text-gray-400"
@@ -74,37 +124,9 @@ const Steptwo = () => {
             PLAY AGAIN
           </button>
         </div>
-        <div>
-          <div
-            className={`${border_src[system_Choose]} w-[130px] cursor-pointer
-          rounded-[50%] border-[16px] bg-white p-6 ${
-            result == "YOU LOSE" ? "cirShadow" : ""
-          }`}
-          >
-            <Image
-              width={0}
-              height={0}
-              sizes="100vw"
-              src={image_src[system_Choose]}
-              alt=""
-              className="h-auto w-full"
-            />
-          </div>
-          <h2 className=" mt-4 text-center text-lg font-bold text-white">
-            HOUSE PICKED
-          </h2>
-        </div>
-      </div>
-
-      <div className="mx-auto mt-32 flex w-9/12  flex-col gap-3 text-center md:hidden">
-        <h1 className=" text-center text-5xl text-white">{result}</h1>
-        <button
-          className="rounded bg-white px-4 py-2 text-3xl text-gray-400"
-          onClick={() => updateActiveTab(1)}
-        >
-          PLAY AGAIN
-        </button>
-      </div>
+      ) : (
+        ""
+      )}
     </>
   );
 };
